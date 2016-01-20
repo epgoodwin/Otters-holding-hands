@@ -1,0 +1,1 @@
+Did you know otters hold hands while they sleep so that they don’t drift apart from each other? I bet you’re glad you know that now.
