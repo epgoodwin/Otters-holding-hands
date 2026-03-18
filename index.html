@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRVTY — Brand Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --crimson:   #F13B13;
+      --black:     #000000;
+      --white:     #FAFAFA;
+      --gray-90:   #111111;
+      --gray-80:   #1A1A1A;
+      --gray-70:   #2E2E2E;
+      --gray-50:   #555555;
+      --gray-30:   #999999;
+      --gray-10:   #DEDEDE;
+      --sidebar-w: 260px;
+      --font-main: 'Space Grotesk', 'Basis Grotesque', 'Helvetica Neue', Arial, sans-serif;
+      --font-mono: 'Space Mono', 'Courier New', monospace;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--crimson); color: var(--white); }
+
+    /* ─── SIDEBAR ──────────────────────────────────────────────────── */
+    #sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: var(--sidebar-w);
+      height: 100vh;
+      background: var(--black);
+      border-right: 1px solid var(--gray-70);
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 36px 28px 24px;
+      border-bottom: 1px solid var(--gray-70);
+    }
+    .sidebar-wordmark {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .sidebar-wordmark span { color: var(--crimson); }
+    .sidebar-tagline {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-30);
+      margin-top: 6px;
+    }
+    .sidebar-label {
+      padding: 20px 28px 8px;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+    }
+    nav ul { list-style: none; }
+    nav ul li a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 28px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-30);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      border-left: 2px solid transparent;
+    }
+    nav ul li a .nav-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--gray-50);
+    }
+    nav ul li a:hover { color: var(--white); background: rgba(241,59,19,0.06); }
+    nav ul li a.active {
+      color: var(--crimson);
+      border-left-color: var(--crimson);
+      background: rgba(241,59,19,0.08);
+    }
+    nav ul li a.active .nav-num { color: var(--crimson); }
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 24px 28px;
+      border-top: 1px solid var(--gray-70);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+    }
+
+    /* ─── MAIN CONTENT ─────────────────────────────────────────────── */
+    main {
+      margin-left: var(--sidebar-w);
+      min-height: 100vh;
+    }
+
+    /* ─── SECTIONS — shared ──────────────────────────────────────────── */
+    section {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(48px, 6vw, 96px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+    .section-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray-30);
+      max-width: 560px;
+    }
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--crimson);
+      margin: 24px 0;
+    }
+
+    /* ─── 00 HERO ─────────────────────────────────────────────────── */
+    #cover {
+      background: var(--black);
+      display: grid;
+      grid-template-rows: 1fr auto;
+    }
+    .cover-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 72px;
+      position: relative;
+    }
+    .cover-bg-text {
+      position: absolute;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      font-size: clamp(180px, 22vw, 340px);
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.02);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .cover-tag {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+      margin-bottom: 32px;
+    }
+    .cover-title {
+      font-size: clamp(72px, 10vw, 160px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .cover-title em {
+      font-style: normal;
+      color: var(--crimson);
+      display: block;
+    }
+    .cover-subtitle {
+      margin-top: 32px;
+      font-size: 14px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gray-30);
+    }
+    .cover-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--gray-70);
+    }
+    .cover-stat {
+      padding: 28px 40px;
+      border-right: 1px solid var(--gray-70);
+    }
+    .cover-stat:last-child { border-right: none; }
+    .cover-stat-val {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cover-stat-val span { color: var(--crimson); }
+    .cover-stat-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+      margin-top: 4px;
+    }
+
+    /* ─── SCROLL INDICATOR ─────────────────────────────────────────── */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      right: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--crimson), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+
+    /* ─── 01 LOGO ──────────────────────────────────────────────────── */
+    #logo {
+      background: var(--gray-90);
+    }
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .logo-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .logo-showcase {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .logo-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--gray-70);
+      padding: 48px 40px;
+      position: relative;
+      transition: border-color 0.3s;
+      cursor: default;
+    }
+    .logo-card:hover { border-color: var(--crimson); }
+    .logo-card-label {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+    }
+    .logo-wordmark-lg {
+      font-size: 72px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .logo-wordmark-lg.crimson { color: var(--crimson); }
+    .logo-wordmark-lg.on-white {
+      color: var(--black);
+      background: var(--white);
+      padding: 16px 32px;
+    }
+    .logo-sub {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gray-30);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .logo-rules {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .logo-rule {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 13px;
+      color: var(--gray-30);
+    }
+    .logo-rule::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--crimson);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .clearspace-demo {
+      position: relative;
+      display: inline-block;
+      margin: 20px auto;
+    }
+    .clearspace-box {
+      border: 1px dashed var(--gray-50);
+      padding: 32px;
+      display: inline-block;
+    }
+    .clearspace-mark {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+    }
+    .clearspace-arrows {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    /* ─── 02 COLOR PALETTE ─────────────────────────────────────────── */
+    #color {
+      background: var(--black);
+    }
+    .color-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+    .color-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .color-grid-wrap {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+    }
+    .swatch-primary {
+      height: 200px;
+      background: var(--crimson);
+      position: relative;
+      cursor: pointer;
+      transition: filter 0.2s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px 24px;
+    }
+    .swatch-primary:hover { filter: brightness(1.1); }
+    .swatch-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .swatch {
+      height: 120px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px 16px;
+    }
+    .swatch:hover { transform: translateY(-4px); }
+    .swatch-info { pointer-events: none; }
+    .swatch-name {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+    .swatch-dark .swatch-name,
+    .swatch-dark .swatch-hex { color: var(--white); }
+    .swatch-light .swatch-name,
+    .swatch-light .swatch-hex { color: var(--black); }
+    .color-usage {
+      margin-top: 40px;
+    }
+    .usage-row {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .usage-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--gray-30);
+    }
+    .usage-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    /* ─── 03 TYPOGRAPHY ────────────────────────────────────────────── */
+    #typography {
+      background: var(--gray-90);
+    }
+    .type-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .type-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .type-specimen {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 40px;
+    }
+    .type-scale-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--gray-70);
+    }
+    .type-scale-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      color: var(--gray-50);
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .type-sample { color: var(--white); font-family: var(--font-main); }
+    .ts-display { font-size: 56px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+    .ts-h1      { font-size: 36px; font-weight: 700; line-height: 1.1; }
+    .ts-h2      { font-size: 24px; font-weight: 600; }
+    .ts-h3      { font-size: 18px; font-weight: 600; }
+    .ts-body    { font-size: 15px; font-weight: 400; color: var(--gray-30); }
+    .ts-caption { font-size: 11px; font-weight: 400; letter-spacing: 0.1em; color: var(--gray-50); text-transform: uppercase; }
+    .ts-mono    { font-family: var(--font-mono); font-size: 12px; color: var(--crimson); }
+    .font-specimen-large {
+      font-size: clamp(80px, 10vw, 140px);
+      font-weight: 700;
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      color: rgba(255,255,255,0.05);
+      position: relative;
+    }
+    .font-specimen-large span { color: var(--white); }
+    .font-detail {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .font-detail-card {
+      border: 1px solid var(--gray-70);
+      padding: 20px;
+    }
+    .font-detail-card-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-50);
+      margin-bottom: 8px;
+    }
+    .font-detail-card-val {
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    /* ─── 04 PHOTOGRAPHY ──────────────────────────────────────────── */
+    #photography {
+      background: var(--black);
+    }
+    .photo-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+    .photo-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .photo-mosaic {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+    .photo-tile {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      min-height: 280px;
+      border: 1px solid var(--gray-70);
+    }
+    .photo-tile-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s ease;
+    }
+    .photo-tile:hover .photo-tile-bg { transform: scale(1.04); }
+    .pt-1 .photo-tile-bg {
+      background: linear-gradient(135deg, #1a0a06 0%, #3d1208 50%, #6b1f0e 100%);
+    }
+    .pt-2 .photo-tile-bg {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    }
+    .pt-3 .photo-tile-bg {
+      background: linear-gradient(135deg, #0d0d0d 0%, #222 100%);
+    }
+    .pt-4 .photo-tile-bg {
+      background: linear-gradient(135deg, #1a0a06 0%, #000 100%);
+    }
+    /* geometric overlays to suggest photography composition */
+    .pt-1::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(241,59,19,0.03) 40px,
+        rgba(241,59,19,0.03) 41px
+      );
+    }
+    .pt-2::after {
+      content: '';
+      position: absolute;
+      top: 20%; left: 30%;
+      width: 60%; height: 60%;
+      border: 1px solid rgba(241,59,19,0.15);
+      transform: rotate(8deg);
+    }
+    .pt-3::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 70%, rgba(241,59,19,0.08) 0%, transparent 60%);
+    }
+    .pt-4::after {
+      content: '';
+      position: absolute;
+      top: 10px; left: 10px; right: 10px; bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .photo-tile-caption {
+      position: relative;
+      z-index: 2;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .photo-principles {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .photo-principle {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .photo-principle-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--crimson);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .photo-principle-text {
+      font-size: 13px;
+      color: var(--gray-30);
+      line-height: 1.5;
+    }
+    .photo-principle-text strong { color: var(--white); font-weight: 600; }
+
+    /* ─── 05 VISUAL ELEMENTS ──────────────────────────────────────── */
+    #visual {
+      background: var(--gray-90);
+    }
+    .visual-layout {
+      min-height: 100vh;
+      padding: 80px 64px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 48px;
+    }
+    .visual-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: end;
+    }
+    .visual-elements-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ve-card {
+      border: 1px solid var(--gray-70);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.3s, background 0.3s;
+      cursor: default;
+    }
+    .ve-card:hover {
+      border-color: var(--crimson);
+      background: rgba(241,59,19,0.04);
+    }
+    .ve-preview {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Graphic element previews */
+    .ve-slash {
+      width: 3px;
+      height: 80px;
+      background: var(--crimson);
+      transform: rotate(20deg);
+      box-shadow: 14px 0 0 var(--crimson), 28px 0 0 rgba(241,59,19,0.4);
+    }
+    .ve-grid-lines {
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(var(--gray-70) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gray-70) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .ve-corner {
+      width: 60px;
+      height: 60px;
+      border-top: 2px solid var(--crimson);
+      border-left: 2px solid var(--crimson);
+      position: relative;
+    }
+    .ve-corner::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 60px; height: 60px;
+      border-bottom: 2px solid rgba(241,59,19,0.3);
+      border-right: 2px solid rgba(241,59,19,0.3);
+    }
+    .ve-bar {
+      display: flex;
+      gap: 6px;
+      align-items: flex-end;
+    }
+    .ve-bar span {
+      width: 8px;
+      background: var(--crimson);
+    }
+    .ve-bar span:nth-child(1) { height: 40px; }
+    .ve-bar span:nth-child(2) { height: 65px; }
+    .ve-bar span:nth-child(3) { height: 30px; background: var(--gray-50); }
+    .ve-bar span:nth-child(4) { height: 80px; }
+    .ve-bar span:nth-child(5) { height: 50px; background: rgba(241,59,19,0.4); }
+    .ve-bar span:nth-child(6) { height: 70px; }
+    .ve-texture {
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        rgba(241,59,19,0.12) 4px,
+        rgba(241,59,19,0.12) 5px
+      );
+    }
+    .ve-dot-grid {
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle, var(--gray-70) 1px, transparent 1px);
+      background-size: 12px 12px;
+    }
+    .ve-rule {
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--crimson), var(--crimson) 40%, var(--gray-70) 40%);
+    }
+    .ve-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .ve-desc {
+      font-size: 12px;
+      color: var(--gray-50);
+      line-height: 1.5;
+    }
+
+    /* ─── 06 MESSAGING ─────────────────────────────────────────────── */
+    #messaging {
+      background: var(--black);
+    }
+    .messaging-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+    }
+    .messaging-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .messaging-content {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+    }
+    .msg-block {
+      border-left: 2px solid var(--gray-70);
+      padding-left: 24px;
+      transition: border-color 0.3s;
+    }
+    .msg-block:hover { border-left-color: var(--crimson); }
+    .msg-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 8px;
+    }
+    .msg-headline {
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .msg-body {
+      font-size: 14px;
+      color: var(--gray-30);
+      line-height: 1.65;
+    }
+    .tagline-hero {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 16px;
+    }
+    .tagline-word {
+      font-size: clamp(40px, 5vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 0.9;
+    }
+    .tagline-word.outline {
+      -webkit-text-stroke: 1px var(--gray-70);
+      color: transparent;
+    }
+    .tagline-word.fill { color: var(--crimson); }
+    .tagline-word.white { color: var(--white); }
+
+    /* ─── 07 TONE OF VOICE ─────────────────────────────────────────── */
+    #tone {
+      background: var(--gray-90);
+    }
+    .tone-layout {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .tone-intro {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--gray-70);
+    }
+    .tone-content {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tone-attributes {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 40px;
+    }
+    .tone-attr {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--gray-70);
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .tone-attr:hover { background: rgba(241,59,19,0.05); }
+    .tone-attr-pos,
+    .tone-attr-neg {
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .tone-attr-pos { color: var(--white); font-weight: 600; }
+    .tone-attr-neg { color: var(--gray-50); border-left: 1px solid var(--gray-70); font-style: italic; }
+    .tone-attr-pos::before {
+      content: '+';
+      color: var(--crimson);
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .tone-attr-neg::before {
+      content: '–';
+      color: var(--gray-50);
+      font-family: var(--font-mono);
+    }
+    .tone-examples {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .tone-example {
+      padding: 20px 24px;
+      border: 1px solid var(--gray-70);
+      position: relative;
+    }
+    .tone-example-tag {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      background: var(--gray-90);
+      padding: 0 8px;
+    }
+    .tone-example.do .tone-example-tag { color: var(--crimson); }
+    .tone-example.do { border-color: var(--crimson); }
+    .tone-example.dont .tone-example-tag { color: var(--gray-50); }
+    .tone-example-text {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .tone-example.do .tone-example-text { color: var(--white); }
+    .tone-example.dont .tone-example-text { color: var(--gray-50); text-decoration: line-through; }
+
+    /* ─── ANIMATED TRANSITIONS ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── COPIED TOAST ─────────────────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: var(--crimson);
+      color: var(--white);
+      padding: 12px 24px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE ────────────────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      :root { --sidebar-w: 0px; }
+      #sidebar { display: none; }
+      main { margin-left: 0; }
+      .logo-grid,
+      .color-layout,
+      .type-layout,
+      .photo-layout,
+      .messaging-layout,
+      .tone-layout { grid-template-columns: 1fr; }
+      .cover-inner { padding: 60px 32px; }
+      .visual-layout { padding: 60px 32px; }
+      .visual-elements-grid { grid-template-columns: 1fr 1fr; }
+      .cover-bottom { grid-template-columns: 1fr; }
+      .cover-stat { border-right: none; border-bottom: 1px solid var(--gray-70); }
+      .logo-intro, .logo-showcase,
+      .color-intro, .color-grid-wrap,
+      .type-intro, .type-specimen,
+      .photo-intro, .messaging-intro,
+      .messaging-content, .tone-intro, .tone-content {
+        padding: 60px 32px;
+      }
+      .photo-mosaic { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ──────────────────── SIDEBAR ─────────────────────────── -->
+<aside id="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-wordmark">GR<span>V</span>TY</div>
+    <div class="sidebar-tagline">Brand Standards · 2024</div>
+  </div>
+  <div class="sidebar-label">Sections</div>
+  <nav>
+    <ul>
+      <li><a href="#cover"      class="active"><span class="nav-num">00</span> Overview</a></li>
+      <li><a href="#logo"               ><span class="nav-num">01</span> Logo</a></li>
+      <li><a href="#color"              ><span class="nav-num">02</span> Color Palette</a></li>
+      <li><a href="#typography"         ><span class="nav-num">03</span> Typography</a></li>
+      <li><a href="#photography"        ><span class="nav-num">04</span> Photography</a></li>
+      <li><a href="#visual"             ><span class="nav-num">05</span> Visual Elements</a></li>
+      <li><a href="#messaging"          ><span class="nav-num">06</span> Messaging</a></li>
+      <li><a href="#tone"               ><span class="nav-num">07</span> Tone of Voice</a></li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    GRVTY &mdash; Answer the Challenge<br/>
+    Brand Book v1.0
+  </div>
+</aside>
+
+<!-- ──────────────────── MAIN ─────────────────────────────── -->
+<main>
+
+  <!-- 00 COVER -->
+  <section id="cover">
+    <div class="cover-inner">
+      <div class="cover-bg-text">GRVTY</div>
+      <div class="cover-tag">GRVTY &nbsp;/&nbsp; Brand Standards &nbsp;/&nbsp; 2024</div>
+      <h1 class="cover-title reveal">
+        Answer<em>The</em>Challenge.
+      </h1>
+      <p class="cover-subtitle reveal reveal-delay-1">Defense Technology &nbsp;&bull;&nbsp; Brand Identity System</p>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+        Scroll
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-stat reveal">
+        <div class="cover-stat-val">01<span>—</span>07</div>
+        <div class="cover-stat-label">Brand Sections</div>
+      </div>
+      <div class="cover-stat reveal reveal-delay-1">
+        <div class="cover-stat-val"><span>#</span>F13B13</div>
+        <div class="cover-stat-label">Primary Color</div>
+      </div>
+      <div class="cover-stat reveal reveal-delay-2">
+        <div class="cover-stat-val">BG<span>.</span></div>
+        <div class="cover-stat-label">Basis Grotesque</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 LOGO -->
+  <section id="logo">
+    <div class="logo-grid">
+      <div class="logo-intro">
+        <p class="section-eyebrow reveal">01 &nbsp;/&nbsp; Logo</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Mark</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          The GRVTY wordmark is the foundation of our visual identity. Bold, 
+          compressed, and unapologetic. It carries the weight of our mission — 
+          to deliver decisive technology at the edge of conflict.
+        </p>
+        <div class="logo-rules reveal reveal-delay-3">
+          <div class="logo-rule">Never stretch, skew, or alter the wordmark proportions.</div>
+          <div class="logo-rule">Maintain clear space equal to the height of the "G" on all sides.</div>
+          <div class="logo-rule">Use only approved color combinations: white on black, black on white, or Centurion Crimson on black.</div>
+          <div class="logo-rule">Do not place the wordmark over busy photography without sufficient contrast.</div>
+          <div class="logo-rule">Minimum reproduction size: 80px wide (digital), 20mm (print).</div>
+        </div>
+      </div>
+      <div class="logo-showcase">
+        <div class="logo-card reveal" style="background:#000; flex:1.2;">
+          <span class="logo-card-label">Primary — White on Black</span>
+          <div class="logo-wordmark-lg">GRVTY</div>
+          <div class="logo-sub">Answer the Challenge.</div>
+        </div>
+        <div class="logo-card reveal reveal-delay-1" style="background:#F13B13; flex:0.8;">
+          <span class="logo-card-label" style="color:rgba(0,0,0,0.5)">Secondary — Black on Crimson</span>
+          <div class="logo-wordmark-lg" style="color:#000">GRVTY</div>
+          <div class="logo-sub" style="color:rgba(0,0,0,0.6)">Answer the Challenge.</div>
+        </div>
+        <div class="logo-card reveal reveal-delay-2" style="background:var(--white); flex:0.8;">
+          <span class="logo-card-label" style="color:var(--gray-50)">Reverse — Black on White</span>
+          <div class="logo-wordmark-lg" style="color:#000">GRVTY</div>
+          <div class="logo-sub" style="color:var(--gray-50)">Answer the Challenge.</div>
+        </div>
+        <div class="logo-card reveal reveal-delay-3" style="background:#1A1A1A; flex:0.8;">
+          <span class="logo-card-label">Crimson Mark on Dark</span>
+          <div class="logo-wordmark-lg crimson">GRVTY</div>
+          <div class="logo-sub">Answer the Challenge.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 COLOR PALETTE -->
+  <section id="color">
+    <div class="color-layout">
+      <div class="color-intro">
+        <p class="section-eyebrow reveal">02 &nbsp;/&nbsp; Color Palette</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Palette</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          GRVTY's color system is built on high contrast and conviction. 
+          Centurion Crimson commands attention — it is used with intention, 
+          never diluted. Black and white carry the weight of clarity.
+        </p>
+        <div class="color-usage reveal reveal-delay-3">
+          <div class="section-eyebrow" style="font-size:9px; margin-bottom:12px;">Usage Ratios</div>
+          <div style="display:flex; height:12px; overflow:hidden; margin-bottom:12px;">
+            <div style="flex:0.6; background:var(--black);"></div>
+            <div style="flex:0.2; background:var(--white);"></div>
+            <div style="flex:0.15; background:var(--crimson);"></div>
+            <div style="flex:0.05; background:var(--gray-50);"></div>
+          </div>
+          <div class="usage-row">
+            <div class="usage-pill"><div class="usage-dot" style="background:var(--black); border:1px solid var(--gray-70);"></div> Black 60%</div>
+            <div class="usage-pill"><div class="usage-dot" style="background:var(--white);"></div> White 20%</div>
+            <div class="usage-pill"><div class="usage-dot" style="background:var(--crimson);"></div> Crimson 15%</div>
+            <div class="usage-pill"><div class="usage-dot" style="background:var(--gray-50);"></div> Neutral 5%</div>
+          </div>
+        </div>
+      </div>
+      <div class="color-grid-wrap">
+        <!-- Primary -->
+        <div class="swatch-primary swatch-dark reveal"
+             onclick="copyColor('#F13B13')"
+             title="Click to copy">
+          <div class="swatch-info">
+            <div class="swatch-name">Centurion Crimson</div>
+            <div class="swatch-hex">#F13B13 &nbsp;·&nbsp; RGB 241, 59, 19 &nbsp;·&nbsp; CMYK 0, 87, 96, 0</div>
+          </div>
+        </div>
+        <!-- Row 1 -->
+        <div class="swatch-row">
+          <div class="swatch swatch-dark reveal reveal-delay-1"
+               style="background:var(--black);"
+               onclick="copyColor('#000000')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Jaguar Black</div>
+              <div class="swatch-hex">#000000</div>
+            </div>
+          </div>
+          <div class="swatch swatch-dark reveal reveal-delay-2"
+               style="background:var(--gray-90);"
+               onclick="copyColor('#111111')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Shadow</div>
+              <div class="swatch-hex">#111111</div>
+            </div>
+          </div>
+          <div class="swatch swatch-dark reveal reveal-delay-3"
+               style="background:var(--gray-70);"
+               onclick="copyColor('#2E2E2E')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Steel</div>
+              <div class="swatch-hex">#2E2E2E</div>
+            </div>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="swatch-row">
+          <div class="swatch swatch-dark reveal reveal-delay-1"
+               style="background:var(--gray-50);"
+               onclick="copyColor('#555555')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Graphite</div>
+              <div class="swatch-hex">#555555</div>
+            </div>
+          </div>
+          <div class="swatch swatch-light reveal reveal-delay-2"
+               style="background:var(--gray-10);"
+               onclick="copyColor('#DEDEDE')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Silver</div>
+              <div class="swatch-hex">#DEDEDE</div>
+            </div>
+          </div>
+          <div class="swatch swatch-light reveal reveal-delay-3"
+               style="background:var(--white); border:1px solid var(--gray-10);"
+               onclick="copyColor('#FAFAFA')" title="Click to copy">
+            <div class="swatch-info">
+              <div class="swatch-name">Alloy White</div>
+              <div class="swatch-hex">#FAFAFA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 TYPOGRAPHY -->
+  <section id="typography">
+    <div class="type-layout">
+      <div class="type-intro">
+        <p class="section-eyebrow reveal">03 &nbsp;/&nbsp; Typography</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Type</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          Basis Grotesque is our typeface. Designed for clarity at any scale, 
+          its structured geometry and confident proportions mirror GRVTY's 
+          commitment to precision. Use weight and size to establish command — 
+          never decoration.
+        </p>
+        <div class="font-detail reveal reveal-delay-3">
+          <div class="font-detail-card">
+            <div class="font-detail-card-label">Primary Typeface</div>
+            <div class="font-detail-card-val">Basis Grotesque</div>
+          </div>
+          <div class="font-detail-card">
+            <div class="font-detail-card-label">Weights in Use</div>
+            <div class="font-detail-card-val">Light · Regular · Medium · Bold</div>
+          </div>
+          <div class="font-detail-card">
+            <div class="font-detail-card-label">Mono Accent</div>
+            <div class="font-detail-card-val">Basis Grotesque Mono</div>
+          </div>
+          <div class="font-detail-card">
+            <div class="font-detail-card-label">Fallback Stack</div>
+            <div class="font-detail-card-val" style="font-size:12px;">Helvetica Neue, Arial, sans-serif</div>
+          </div>
+        </div>
+      </div>
+      <div class="type-specimen">
+        <div class="font-specimen-large reveal">
+          Aa<span>Bb</span>
+        </div>
+        <div class="type-scale reveal reveal-delay-1">
+          <div class="type-scale-row">
+            <span class="type-scale-label">Display</span>
+            <span class="type-sample ts-display">Challenge.</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">H1 · 36px</span>
+            <span class="type-sample ts-h1">Answer the Call</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">H2 · 24px</span>
+            <span class="type-sample ts-h2">Mission Briefing</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">H3 · 18px</span>
+            <span class="type-sample ts-h3">Operational Readiness</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">Body · 15px</span>
+            <span class="type-sample ts-body">GRVTY delivers decisive technology engineered for the realities of modern defense.</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">Caption · 11px</span>
+            <span class="type-sample ts-caption">Classified — Operational Use Only</span>
+          </div>
+          <div class="type-scale-row">
+            <span class="type-scale-label">Mono · 12px</span>
+            <span class="type-sample ts-mono">SYS_REF: GRV-001 · STATUS: ACTIVE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 PHOTOGRAPHY -->
+  <section id="photography">
+    <div class="photo-layout">
+      <div class="photo-intro">
+        <p class="section-eyebrow reveal">04 &nbsp;/&nbsp; Photography</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Lens</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          GRVTY imagery is direct and uncompromising. We reference the 
+          visual language of photojournalism: high contrast, purposeful framing, 
+          human presence within systems of precision. Every image must earn its place.
+        </p>
+        <div class="photo-principles reveal reveal-delay-3">
+          <div class="photo-principle">
+            <span class="photo-principle-num">01</span>
+            <span class="photo-principle-text"><strong>High contrast.</strong> Shots favor dramatic light and shadow. Avoid flat, evenly lit corporate imagery.</span>
+          </div>
+          <div class="photo-principle">
+            <span class="photo-principle-num">02</span>
+            <span class="photo-principle-text"><strong>Human scale.</strong> Show people in context — operators, engineers, decision-makers — as agents of action, not props.</span>
+          </div>
+          <div class="photo-principle">
+            <span class="photo-principle-num">03</span>
+            <span class="photo-principle-text"><strong>Purposeful framing.</strong> Asymmetric compositions. Room to breathe on one side. Edge-to-edge tension.</span>
+          </div>
+          <div class="photo-principle">
+            <span class="photo-principle-num">04</span>
+            <span class="photo-principle-text"><strong>Desaturated palette.</strong> Process all imagery through the GRVTY preset: reduce saturation, crush blacks, lift grain.</span>
+          </div>
+          <div class="photo-principle">
+            <span class="photo-principle-num">05</span>
+            <span class="photo-principle-text"><strong>Never stock-photo aesthetics.</strong> No forced smiles, no generic office environments, no clipart-adjacent tech imagery.</span>
+          </div>
+        </div>
+      </div>
+      <div class="photo-mosaic">
+        <div class="photo-tile pt-1 reveal">
+          <div class="photo-tile-bg"></div>
+          <span class="photo-tile-caption">Field Operations</span>
+        </div>
+        <div class="photo-tile pt-2 reveal reveal-delay-1">
+          <div class="photo-tile-bg"></div>
+          <span class="photo-tile-caption">Systems Integration</span>
+        </div>
+        <div class="photo-tile pt-3 reveal reveal-delay-2">
+          <div class="photo-tile-bg"></div>
+          <span class="photo-tile-caption">Mission Command</span>
+        </div>
+        <div class="photo-tile pt-4 reveal reveal-delay-3">
+          <div class="photo-tile-bg"></div>
+          <span class="photo-tile-caption">Engineering Precision</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 VISUAL ELEMENTS -->
+  <section id="visual">
+    <div class="visual-layout">
+      <div class="visual-header">
+        <div>
+          <p class="section-eyebrow reveal">05 &nbsp;/&nbsp; Visual Elements</p>
+          <h2 class="section-title reveal reveal-delay-1">The<br/>System</h2>
+        </div>
+        <div>
+          <div class="divider reveal"></div>
+          <p class="section-body reveal reveal-delay-1">
+            Graphic elements reinforce GRVTY's structural aesthetic. 
+            They are drawn from technical drawing conventions — measurement marks, 
+            grid systems, registration corners — adapted for brand expression.
+          </p>
+        </div>
+      </div>
+      <div class="visual-elements-grid">
+        <div class="ve-card reveal">
+          <div class="ve-preview"><div class="ve-slash"></div></div>
+          <div class="ve-title">Slash Rule</div>
+          <div class="ve-desc">Used as a separator or accent. Angled at 20° to suggest forward motion and urgency.</div>
+        </div>
+        <div class="ve-card reveal reveal-delay-1">
+          <div class="ve-preview"><div class="ve-grid-lines"></div></div>
+          <div class="ve-title">Grid Lines</div>
+          <div class="ve-desc">Technical grid references backgrounds and data visualizations. Never purely decorative.</div>
+        </div>
+        <div class="ve-card reveal reveal-delay-2">
+          <div class="ve-preview"><div class="ve-corner"></div></div>
+          <div class="ve-title">Registration Corner</div>
+          <div class="ve-desc">L-shaped frame elements drawn from technical drafting. Used to frame imagery and callouts.</div>
+        </div>
+        <div class="ve-card reveal reveal-delay-1">
+          <div class="ve-preview"><div class="ve-bar"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="ve-title">Data Bars</div>
+          <div class="ve-desc">Vertical bar system for data expression. Crimson highlights peak values. Gray for baseline.</div>
+        </div>
+        <div class="ve-card reveal reveal-delay-2">
+          <div class="ve-preview"><div class="ve-texture"></div></div>
+          <div class="ve-title">Hatch Texture</div>
+          <div class="ve-desc">Fine diagonal hatch pattern, referencing engineering blueprints. Used sparingly as fill.</div>
+        </div>
+        <div class="ve-card reveal reveal-delay-3">
+          <div class="ve-preview"><div class="ve-rule"></div></div>
+          <div class="ve-title">Crimson Rule</div>
+          <div class="ve-desc">Horizontal rule with a crimson lead. Divides content sections in editorial layouts.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 MESSAGING -->
+  <section id="messaging">
+    <div class="messaging-layout">
+      <div class="messaging-intro">
+        <p class="section-eyebrow reveal">06 &nbsp;/&nbsp; Messaging</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Word</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          GRVTY's messaging is built for urgency and clarity. 
+          We speak to those who make high-stakes decisions. 
+          Our words are chosen with the same precision as our technology.
+        </p>
+        <div class="tagline-hero reveal reveal-delay-3">
+          <div class="tagline-word outline">Answer</div>
+          <div class="tagline-word fill">The</div>
+          <div class="tagline-word white">Challenge.</div>
+        </div>
+      </div>
+      <div class="messaging-content">
+        <div class="msg-block reveal">
+          <div class="msg-label">Brand Tagline</div>
+          <div class="msg-headline">Answer the Challenge.</div>
+          <div class="msg-body">A declaration, not a question. It frames everything GRVTY does as a response to real-world operational demands. Three words that carry the weight of the mission.</div>
+        </div>
+        <div class="msg-block reveal reveal-delay-1">
+          <div class="msg-label">Brand Positioning</div>
+          <div class="msg-headline">Technology That Operates at the Edge</div>
+          <div class="msg-body">GRVTY engineers solutions for environments where failure is not an option. We move faster than legacy defense contractors and hold ourselves to higher operational standards.</div>
+        </div>
+        <div class="msg-block reveal reveal-delay-2">
+          <div class="msg-label">Mission Statement</div>
+          <div class="msg-headline">Decisive Technology for a Contested World</div>
+          <div class="msg-body">We build systems that extend human capability in contested, complex, and high-consequence environments. Our products are not platforms — they are force multipliers.</div>
+        </div>
+        <div class="msg-block reveal reveal-delay-3">
+          <div class="msg-label">Proof Points</div>
+          <div class="msg-headline">Speed. Precision. Adaptability.</div>
+          <div class="msg-body">GRVTY technology is designed for rapid deployment, operates under adversarial conditions, and evolves with the threat environment. We answer the challenge — every time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 TONE OF VOICE -->
+  <section id="tone">
+    <div class="tone-layout">
+      <div class="tone-intro">
+        <p class="section-eyebrow reveal">07 &nbsp;/&nbsp; Tone of Voice</p>
+        <h2 class="section-title reveal reveal-delay-1">The<br/>Voice</h2>
+        <div class="divider reveal reveal-delay-2"></div>
+        <p class="section-body reveal reveal-delay-2">
+          GRVTY communicates with the directness of operational language. 
+          We are not a brand that hedges. We do not use jargon to obscure — 
+          we use precision language to illuminate.
+        </p>
+        <div class="tone-attributes reveal reveal-delay-3">
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Direct</div>
+            <div class="tone-attr-neg">Blunt or dismissive</div>
+          </div>
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Confident</div>
+            <div class="tone-attr-neg">Arrogant or boastful</div>
+          </div>
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Technical</div>
+            <div class="tone-attr-neg">Jargon-heavy or opaque</div>
+          </div>
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Urgent</div>
+            <div class="tone-attr-neg">Alarmist or reactive</div>
+          </div>
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Mission-Driven</div>
+            <div class="tone-attr-neg">Ideological or political</div>
+          </div>
+          <div class="tone-attr">
+            <div class="tone-attr-pos">Human</div>
+            <div class="tone-attr-neg">Casual or flippant</div>
+          </div>
+        </div>
+      </div>
+      <div class="tone-content">
+        <div class="tone-examples reveal">
+          <div class="tone-example do">
+            <div class="tone-example-tag">Do — Mission Brief</div>
+            <div class="tone-example-text">
+              "GRVTY's sensor fusion platform reduces decision latency from minutes to seconds. 
+              Deployed across contested airspace in three operational theaters. 
+              Built for the environments where legacy systems fail."
+            </div>
+          </div>
+          <div class="tone-example dont">
+            <div class="tone-example-tag">Don't — Corporate Filler</div>
+            <div class="tone-example-text">
+              "We are excited to announce our industry-leading, best-in-class 
+              innovative defense solutions that leverage synergies across our 
+              portfolio to deliver value to our stakeholder ecosystem."
+            </div>
+          </div>
+          <div class="tone-example do">
+            <div class="tone-example-tag">Do — Product Launch</div>
+            <div class="tone-example-text">
+              "Field-hardened. Adversary-aware. Ready before the order is given. 
+              ARCHER v2 ships Q1. Answer the challenge."
+            </div>
+          </div>
+          <div class="tone-example dont">
+            <div class="tone-example-tag">Don't — Over-qualified</div>
+            <div class="tone-example-text">
+              "Our solution may potentially offer some advantages in certain 
+              operational scenarios depending on mission parameters and customer requirements."
+            </div>
+          </div>
+          <div class="tone-example do">
+            <div class="tone-example-tag">Do — About Us</div>
+            <div class="tone-example-text">
+              "We are engineers, operators, and analysts who have stood where the 
+              threat is real. We build what we wish we'd had."
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- TOAST -->
+<div id="toast">Copied to clipboard</div>
+
+<script>
+  // ── Smooth scroll & active nav tracking ──────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#sidebar nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // ── Scroll reveal ─────────────────────────────────────────────
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ── Copy color to clipboard ───────────────────────────────────
+  function copyColor(hex) {
+    navigator.clipboard.writeText(hex).then(() => {
+      const toast = document.getElementById('toast');
+      toast.textContent = `Copied ${hex}`;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    });
+  }
+
+  // ── Smooth nav scroll ─────────────────────────────────────────
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
