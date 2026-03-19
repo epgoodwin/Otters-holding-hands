@@ -42,7 +42,7 @@ export async function GET() {
       .map((e) => ({
         id: e.id,
         name: e.name,
-        pathLower: e.path_lower,
+        pathLower: e.path_lower ?? `/${e.name}`,
       }));
 
     return NextResponse.json({ folders });
