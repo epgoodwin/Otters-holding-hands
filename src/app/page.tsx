@@ -11,7 +11,7 @@ async function getFolders(): Promise<{ folders?: Folder[]; error?: string }> {
     // Use absolute URL for server-side fetch
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
     const res = await fetch(`${baseUrl}/api/dropbox/folders`, {
-      next: { revalidate: 60 }, // cache for 60 seconds
+      cache: "no-store",
     });
     return res.json();
   } catch (err) {
