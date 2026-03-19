@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 const DROPBOX_API = "https://api.dropboxapi.com/2";
 
 export async function GET() {
@@ -35,6 +37,9 @@ export async function GET() {
     }
 
     const data = await res.json();
+
+    // Debug: log raw Dropbox entries to terminal
+    console.log("[folders] raw entries sample:", JSON.stringify(data.entries?.slice(0, 2), null, 2));
 
     // Filter to only folders
     const folders = (data.entries as DropboxEntry[])

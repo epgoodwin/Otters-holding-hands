@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 const DROPBOX_API = "https://api.dropboxapi.com/2";
 
 export async function GET(request: NextRequest) {
