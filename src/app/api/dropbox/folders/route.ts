@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 const DROPBOX_API = "https://api.dropboxapi.com/2";
-const DROPBOX_CONTENT_API = "https://content.dropboxapi.com/2";
 
 export async function GET() {
   const token = process.env.DROPBOX_ACCESS_TOKEN;
@@ -21,7 +20,6 @@ export async function GET() {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
-        "Dropbox-API-Path-Root": JSON.stringify({ ".tag": "shared_folder" }),
       },
       body: JSON.stringify({
         path: "",
