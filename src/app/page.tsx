@@ -1,5 +1,7 @@
 import FolderSection from "@/components/FolderSection";
 
+export const dynamic = "force-dynamic";
+
 interface Folder {
   id: string;
   name: string;

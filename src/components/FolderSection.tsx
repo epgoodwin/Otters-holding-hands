@@ -23,6 +23,11 @@ export default function FolderSection({ name, pathLower }: FolderSectionProps) {
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
+    if (!pathLower) {
+      setError("Folder path is missing.");
+      setLoading(false);
+      return;
+    }
     fetch(`/api/dropbox/files?path=${encodeURIComponent(pathLower)}`)
       .then((r) => r.json())
       .then((data) => {
