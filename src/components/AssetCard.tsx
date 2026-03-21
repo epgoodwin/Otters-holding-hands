@@ -5,6 +5,7 @@ import { useState } from "react";
 interface AssetCardProps {
   name: string;
   pathLower: string;
+  fileId: string;
   mediaType: "image" | "video" | "pdf" | "document" | "other";
   size: number;
 }
@@ -46,7 +47,7 @@ function FileIcon({ mediaType }: { mediaType: AssetCardProps["mediaType"] }) {
   );
 }
 
-export default function AssetCard({ name, pathLower, mediaType, size }: AssetCardProps) {
+export default function AssetCard({ name, pathLower, fileId, mediaType, size }: AssetCardProps) {
   const [linkLoading, setLinkLoading] = useState(false);
   const thumbnailUrl =
     mediaType === "image" || mediaType === "video"
@@ -56,7 +57,7 @@ export default function AssetCard({ name, pathLower, mediaType, size }: AssetCar
   async function handleClick() {
     setLinkLoading(true);
     try {
-      const res = await fetch(`/api/dropbox/link?path=${encodeURIComponent(pathLower)}`);
+      const res = await fetch(`/api/dropbox/link?id=${encodeURIComponent(fileId)}`);
       const data = await res.json();
       if (data.url) {
         window.open(data.url, "_blank", "noopener,noreferrer");

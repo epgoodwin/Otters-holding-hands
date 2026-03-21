@@ -4,9 +4,10 @@ const DROPBOX_CONTENT_API = "https://content.dropboxapi.com/2";
 
 export async function GET(request: NextRequest) {
   const token = process.env.DROPBOX_ACCESS_TOKEN;
+  const sharedLink = process.env.DROPBOX_SHARED_LINK;
 
-  if (!token) {
-    return NextResponse.json({ error: "Missing DROPBOX_ACCESS_TOKEN." }, { status: 500 });
+  if (!token || !sharedLink) {
+    return NextResponse.json({ error: "Missing DROPBOX_ACCESS_TOKEN or DROPBOX_SHARED_LINK." }, { status: 500 });
   }
 
   const { searchParams } = new URL(request.url);
@@ -22,7 +23,7 @@ export async function GET(request: NextRequest) {
       headers: {
         Authorization: `Bearer ${token}`,
         "Dropbox-API-Arg": JSON.stringify({
-          resource: { ".tag": "path", path: filePath },
+          resource: { ".tag": "shared_link", url: sharedLink, path: filePath },
           format: { ".tag": "jpeg" },
           size: { ".tag": "w640h480" },
           mode: { ".tag": "fitone_bestfit" },

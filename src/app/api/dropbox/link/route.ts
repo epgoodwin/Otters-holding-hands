@@ -10,50 +10,29 @@ export async function GET(request: NextRequest) {
   }
 
   const { searchParams } = new URL(request.url);
-  const filePath = searchParams.get("path");
+  const fileId = searchParams.get("id");
 
-  if (!filePath) {
-    return NextResponse.json({ error: "Missing 'path' query parameter." }, { status: 400 });
+  if (!fileId) {
+    return NextResponse.json({ error: "Missing 'id' query parameter." }, { status: 400 });
   }
 
   try {
-    // Try to get an existing shared link first
-    const listRes = await fetch(`${DROPBOX_API}/sharing/list_shared_links`, {
+    const res = await fetch(`${DROPBOX_API}/files/get_temporary_link`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ path: filePath, direct_only: true }),
+      body: JSON.stringify({ path: fileId }),
     });
 
-    if (listRes.ok) {
-      const listData = await listRes.json();
-      if (listData.links?.length > 0) {
-        return NextResponse.json({ url: listData.links[0].url });
-      }
+    if (!res.ok) {
+      const err = await res.text();
+      return NextResponse.json({ error: err }, { status: res.status });
     }
 
-    // Create a new shared link if none exists
-    const createRes = await fetch(`${DROPBOX_API}/sharing/create_shared_link_with_settings`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        path: filePath,
-        settings: { requested_visibility: { ".tag": "public" } },
-      }),
-    });
-
-    if (!createRes.ok) {
-      const err = await createRes.text();
-      return NextResponse.json({ error: err }, { status: createRes.status });
-    }
-
-    const createData = await createRes.json();
-    return NextResponse.json({ url: createData.url });
+    const data = await res.json();
+    return NextResponse.json({ url: data.link });
   } catch (err) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }

@@ -87,6 +87,7 @@ export default function FolderSection({ name, pathLower }: FolderSectionProps) {
                   key={file.id}
                   name={file.name}
                   pathLower={file.pathLower}
+                  fileId={file.id}
                   mediaType={file.mediaType}
                   size={file.size}
                 />
