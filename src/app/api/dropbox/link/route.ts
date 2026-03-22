@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getDropboxToken } from "@/lib/dropbox-token";
 
 const DROPBOX_API = "https://api.dropboxapi.com/2";
 
 export async function GET(request: NextRequest) {
-  const token = process.env.DROPBOX_ACCESS_TOKEN;
-
-  if (!token) {
-    return NextResponse.json({ error: "Missing DROPBOX_ACCESS_TOKEN." }, { status: 500 });
+  let token: string;
+  try {
+    token = await getDropboxToken();
+  } catch (err) {
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 
   const { searchParams } = new URL(request.url);

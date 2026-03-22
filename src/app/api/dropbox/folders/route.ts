@@ -1,18 +1,25 @@
 import { NextResponse } from "next/server";
+import { getDropboxToken } from "@/lib/dropbox-token";
 
 export const dynamic = "force-dynamic";
 
 const DROPBOX_API = "https://api.dropboxapi.com/2";
 
 export async function GET() {
-  const token = process.env.DROPBOX_ACCESS_TOKEN;
   const sharedLink = process.env.DROPBOX_SHARED_LINK;
 
-  if (!token || !sharedLink) {
+  if (!sharedLink) {
     return NextResponse.json(
-      { error: "Missing DROPBOX_ACCESS_TOKEN or DROPBOX_SHARED_LINK in environment variables." },
+      { error: "Missing DROPBOX_SHARED_LINK in environment variables." },
       { status: 500 }
     );
+  }
+
+  let token: string;
+  try {
+    token = await getDropboxToken();
+  } catch (err) {
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 
   try {
